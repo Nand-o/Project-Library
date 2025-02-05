@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+
+    & .card-container {
+        flex: 1;
+        background-color: aqua;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    & dialog {
+        justify-self: center;
+    }
+}
+
+.form-container {
+    flex: 1;
+    width: 30vw;
+    height: 30vh;
+}
