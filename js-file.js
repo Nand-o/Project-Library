@@ -1,14 +1,20 @@
 const myLibrary = [];
 
+// Just random book
+const Book1 = new Book("Sisi Tergelap Surga", "Brian Khrisna", "304", "on");
+addBookToLibrary(Book1);
+
+const Book2 = new Book("Dilan: Dia adalah Dilanku Tahun 1990", "Pidi Baiq", "348", "off");
+addBookToLibrary(Book2);
+
+const Book3 = new Book("Seporsi Mie Ayam Sebelum Mati", "Brian Khrisna", "216", "off");
+addBookToLibrary(Book3);
+
 function Book(title, author, page, read = "not yet") {
     this.title = title;
     this.author = author;
     this.page = page;
     this.read = read;
-}
-
-Book.prototype.info = function() {
-    const info = title + " " + author + ", " + page + ", " + read;
 }
 
 function addBookToLibrary(Book) {
@@ -21,7 +27,7 @@ function makeCard(obj) {
     
     const title = document.createElement("p");
     title.classList.add("title-card");
-    title.textContent = `Title Book: ${obj.title}`;
+    title.textContent = `${obj.title}`;
     card.appendChild(title);
 
     const author = document.createElement("p");
@@ -51,21 +57,18 @@ function makeCard(obj) {
     removeBtn.addEventListener("click", () => {
         const objTitle = obj.title;
         let index = myLibrary.findIndex((book) => book.title === objTitle);
-        console.log(index);
         myLibrary.splice(index, 1);
         showCard()
     });
     card.appendChild(removeBtn);
 
     const changeStatus = document.createElement("button");
-    changeStatus.classList.add("change-status");
+    changeStatus.classList.add("change");
     changeStatus.textContent = "Change Status Reading";
     changeStatus.addEventListener("click", () => {
         const objTitle = obj.title;
         const objStatus = obj.read;
         let index = myLibrary.findIndex((book) => book.title === objTitle);
-        console.log(index);
-        console.log(myLibrary[index].read);
 
         if (objStatus === "on") {
             myLibrary[index].read = "off";
@@ -89,12 +92,17 @@ function showCard() {
         container.appendChild(bookCard);
     }
 
-    console.table(myLibrary);
-}
+    const addCard = document.createElement("div");
+    addCard.classList.add("addCard");
 
-// Just random book
-const Hobbit = new Book("The Hobbit 1000 S2", "Idk", "289", "on");
-addBookToLibrary(Hobbit);
+    const plus = document.createElement("p");
+    plus.textContent = "+";
+    addCard.appendChild(plus);
+    addCard.addEventListener("click", () => {
+        dialog.showModal();
+    });
+    container.appendChild(addCard);
+}
 
 
 // Javascript Edit HTML here!
@@ -105,10 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const dialog = document.getElementById("formDialog");
 const newBookBtn = document.getElementById("newBook");
 const closeBtn = document.querySelector(".close-form");
-
-newBookBtn.addEventListener("click", () => {
-    dialog.showModal();
-});
 
 closeBtn.addEventListener("click", () => {
     event.preventDefault();

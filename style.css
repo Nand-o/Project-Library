@@ -2,36 +2,164 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
     width: 100vw;
     height: 100vh;
-    padding: 1em;
+    background-color: #B6CBBD;
+    padding: 0.5em;
     display: flex;
     flex-direction: column;
+    border: 10px solid #754E1A;
+
+
+    & .header {
+        flex: 0.1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1em;
+
+        & .header-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #754E1A;
+            font-variant: small-caps;   
+        }
+    }
+
+    & .button {
+        flex: 0.07;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & #newBook {
+            width: 10vw;
+            height: 40px;
+        }
+    }    
+    
 
     & .card-container {
         flex: 1;
-        background-color: aqua;
+        background-color: #B6CBBD;
+        border-radius: 1em;
         display: grid;
-        padding: 50px;
+        padding: 15px;
         gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+        overflow: auto;
     }
 
     & dialog {
+        width: 40vw;
+        height: 75vh;
+        align-self: center;
         justify-self: center;
+        border: 0;
     }
 }
 
 .form-container {
-    flex: 1;
-    width: 30vw;
-    height: 30vh;
+    width: 40vw;
+    height: 75vh;
+    background-color: #B6CBBD;
+    border: 10px solid #754E1A;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 10px;
+
+    & .title-book,
+    .author-book,
+    .page-book {
+        border: 3px solid #754E1A;
+        background-color: #F8E1B7;
+        height: 50px;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #754E1A;
+    }
+
+    & .status {
+        width: 70px;
+        height: 70px;
+        margin-left: 100px;
+        background-color: #F8E1B7;
+    }
+
+    & .close-form {
+        background-color: #754E1A;
+        height: 3em;
+        border: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #F8E1B7;
+        border-radius: 1em;
+    }
+}
+
+.form-container > label {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #754E1A;
+}
+
+.card,
+.addCard {
+    background-color: #F8E1B7;
+    border-left: 10px solid #754E1A;
+    border-radius: 1em;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.6); 
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.6);
 }
 
 .card {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+    & .title-card {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #754E1A;
+    }
+
+    & .remove {
+        background-color: #754E1A;
+        height: 3em;
+        border: 0;
+        margin-bottom: 10px;
+        margin-top: 40px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #F8E1B7;
+        border-radius: 1em;
+    }
+
+    & .change {
+        background-color: #754E1A;
+        height: 3em;
+        border: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #F8E1B7;
+        border-radius: 1em;
+    }
+}
+
+.addCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > p {
+        font-size: 15rem;
+        color: #754E1A;
+    }
 }
