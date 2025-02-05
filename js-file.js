@@ -36,20 +36,46 @@ function makeCard(obj) {
 
     const status = document.createElement("p");
     status.classList.add("status-card");
-    status.textContent = `Status Reading: ${obj.read}`;
+    if (obj.read === "on") {
+        let check = "Done Reading";
+        status.textContent = `Status Reading: ${check}`;
+    } else {
+        let check = "Not yet";
+        status.textContent = `Status Reading: ${check}`;
+    }
     card.appendChild(status);
 
     const removeBtn = document.createElement("button");
     removeBtn.classList.add("remove");
     removeBtn.textContent = "Delete this card!";
     removeBtn.addEventListener("click", () => {
-        const objTittle = obj.title;
-        let index = myLibrary.findIndex((book) => book.title === objTittle);
+        const objTitle = obj.title;
+        let index = myLibrary.findIndex((book) => book.title === objTitle);
         console.log(index);
         myLibrary.splice(index, 1);
         showCard()
     });
     card.appendChild(removeBtn);
+
+    const changeStatus = document.createElement("button");
+    changeStatus.classList.add("change-status");
+    changeStatus.textContent = "Change Status Reading";
+    changeStatus.addEventListener("click", () => {
+        const objTitle = obj.title;
+        const objStatus = obj.read;
+        let index = myLibrary.findIndex((book) => book.title === objTitle);
+        console.log(index);
+        console.log(myLibrary[index].read);
+
+        if (objStatus === "on") {
+            myLibrary[index].read = "off";
+            showCard()
+        } else {
+            myLibrary[index].read = "on";
+            showCard()
+        }
+    });
+    card.appendChild(changeStatus);
 
     return card
 }
@@ -67,7 +93,7 @@ function showCard() {
 }
 
 // Just random book
-const Hobbit = new Book("The Hobbit 1000 S2", "Idk", "289", "not yet");
+const Hobbit = new Book("The Hobbit 1000 S2", "Idk", "289", "on");
 addBookToLibrary(Hobbit);
 
 
