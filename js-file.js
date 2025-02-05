@@ -40,8 +40,15 @@ function makeCard(obj) {
     card.appendChild(status);
 
     const removeBtn = document.createElement("button");
-    removeBtn.classList.add("remove-button");
+    removeBtn.classList.add("remove");
     removeBtn.textContent = "Delete this card!";
+    removeBtn.addEventListener("click", () => {
+        const objTittle = obj.title;
+        let index = myLibrary.findIndex((book) => book.title === objTittle);
+        console.log(index);
+        myLibrary.splice(index, 1);
+        showCard()
+    });
     card.appendChild(removeBtn);
 
     return card
@@ -100,10 +107,4 @@ closeBtn.addEventListener("click", () => {
 
     dialog.close();
     showCard()
-});
-
-const removeBtn = document.querySelector(".remove-button");
-
-removeBtn.addEventListener(("click"), () => {
-    alert("anjing bingung gw");
 });
