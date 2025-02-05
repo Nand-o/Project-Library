@@ -15,7 +15,10 @@
         flex: 1;
         background-color: aqua;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 50px;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
     }
 
     & dialog {
@@ -27,4 +30,8 @@
     flex: 1;
     width: 30vw;
     height: 30vh;
+}
+
+.card {
+    background-color: white;
 }
